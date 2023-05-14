@@ -29,11 +29,11 @@ class UdemyCursoPrimero : AppCompatActivity() {
         // var es un dato variable que puede cambia
         var nombre: String = "Ale"
         var vip: Boolean = false
-        var saludo = "Hola $nombre"
+        var saludo = "Hola $nombre $saldo"
 
         /*Tipos de datos
         * string, booleab, Int, float, double, Long*/
 
-        println(nombre)
+        println(saludo)
     }
 }
