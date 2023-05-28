@@ -122,10 +122,10 @@ class UdemyCursoPrimero : AppCompatActivity() {
 
         println("Numero de clientes  ${clientes.size}")
 
-        var divisas: List<String> = listOf("USE", "EUR", "YEN")
+        val divisas: List<String> = listOf("USE", "EUR", "YEN")
         println(divisas)
 
-        var bolsa: MutableList<String> = mutableListOf("Coca-Cola", "Adidas", "Amazon", "Pficer")
+        val bolsa: MutableList<String> = mutableListOf("Coca-Cola", "Adidas", "Amazon", "Pficer")
         println(bolsa)
         /*
                 bolsa.add("Adobe")
@@ -146,7 +146,7 @@ class UdemyCursoPrimero : AppCompatActivity() {
                 println(bolsa)
                 println(bolsa.none())
         */
-        var mapa: Map<Int, String> = mapOf(
+        val mapa: Map<Int, String> = mapOf(
             1 to "España",
             2 to "Mexico",
             3 to "Colombia"
@@ -154,13 +154,13 @@ class UdemyCursoPrimero : AppCompatActivity() {
 
         println(mapa)
 
-        var inversiones = mutableMapOf<String, Float>()
+        val inversiones = mutableMapOf<String, Float>()
         println(inversiones)
 
         var empresa: String? = null
 
         mostrar_saldo()
-        var cantidad_a_invertir = 90f
+        val cantidad_a_invertir = 90f
         var index = 0
 
         while (saldo >= cantidad_a_invertir) {
