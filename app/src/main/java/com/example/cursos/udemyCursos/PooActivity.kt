@@ -17,5 +17,6 @@ class PooActivity : AppCompatActivity() {
         println(jota.alive)
         jota.die()
         println(jota.alive)
+        println(jota.alive)
     }
 }
