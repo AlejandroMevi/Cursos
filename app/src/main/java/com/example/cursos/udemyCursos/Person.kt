@@ -14,4 +14,5 @@ open class Person(var nombre : String = "Persona", var passport : String? = null
         alive = false
     }
 }
+// clase que hereda de clase Persona, se herada con dos puntos : y la clase
 class Athlete(name: String, passport: String?, var sport: String): Person(name, passport)
