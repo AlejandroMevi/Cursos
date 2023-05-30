@@ -100,16 +100,19 @@ class Firepokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f) : Pokemon
         this.sayHi()
     }
 
+    //Polimorfismo
+    // se puede modificar una clase heredada con Override
     override fun attack() {
+        // con super, se llama la funcion superior, lo cual ejecuta cualquier funcion de la clase padre
         super.attack()
         Toast.makeText(maincontext, "Ataque con fuego!!", Toast.LENGTH_LONG).show()
-
         Toast.makeText(maincontext, "Bola ${++numBall}", Toast.LENGTH_LONG).show()
         ball = ballFire(ballTemperature)
         ball.throwBall()
     }
 }
 
+// Colaboracion entre clases
 class ballFire(var t: Int = 100) {
     fun throwBall() {
         Toast.makeText(maincontext, "Tirando bola con temperatura de $t", Toast.LENGTH_LONG).show()
@@ -151,6 +154,7 @@ abstract class thanks() {
     }
 }
 
+// Interfaces no se heredan de clases, si no de interfaces, no tienen construsctores
 interface sayBay {
     var dato: Int
     fun sayBye() {

@@ -13,46 +13,52 @@ import com.example.cursos.R
 import com.example.cursos.databinding.ActivityPooBinding
 
 private lateinit var binding: ActivityPooBinding
+
 class PooActivity : AppCompatActivity() {
-    companion object{
+    companion object {
         lateinit var maincontext: Context
     }
+
     private lateinit var pok: Pokemon
     private lateinit var waterPok: Waterpokemon
     private lateinit var firePok: Firepokemon
     private lateinit var earthPok: Earthpokemon
 
-    object fernanda{
+    object fernanda {
         var apodo = "fer"
-        fun saludo(){ println("Hola, me llaman $apodo")}
+        fun saludo() {
+            println("Hola, me llaman $apodo")
+        }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPooBinding.inflate(layoutInflater)
         setContentView(binding.root)
-/*
-        var num : Int = 0
-        val jota : Person = Person("Jota", "ASD1Q23")
-        val anonimo : Person = Person()
-        anonimo.Person()
-        println(jota.alive)
-        println(jota.nombre)
-        println(jota.passport)
-        jota.die()
-        println(jota.alive)
+        /*
+                var num : Int = 0
+                val jota : Person = Person("Jota", "ASD1Q23")
+                val anonimo : Person = Person()
+                anonimo.Person()
+                println(jota.alive)
+                println(jota.nombre)
+                println(jota.passport)
+                jota.die()
+                println(jota.alive)
 
-        val bicho : Pokemon = Pokemon()
-        println(bicho.getName())
-        println(bicho.getAttackPower())
-        bicho.setLife(30f)
-        println(bicho.getLife())*/
+                val bicho : Pokemon = Pokemon()
+                println(bicho.getName())
+                println(bicho.getAttackPower())
+                bicho.setLife(30f)
+                println(bicho.getLife())*/
 
+        //Accede a clase padre
         var sc = SubClasses()
         println(sc.presentar())
-
+        //Accede a clase anidada
         var ani = SubClasses.Anidada()
         println(ani.presentar())
-
+        //Accede a clase interna
         var inn = SubClasses().Interna()
         println(inn.presentar())
 
@@ -62,14 +68,14 @@ class PooActivity : AppCompatActivity() {
         println(fernanda.saludo())
 
 
-        var sol : star = star("Sol", 696340f, "Vía Láctea")
+        var sol: star = star("Sol", 696340f, "Vía Láctea")
         println(sol)
 
-        var betelgeuse : star = star("Betelgeuse", 617100000f, "Orión")
+        var betelgeuse: star = star("Betelgeuse", 617100000f, "Orión")
         betelgeuse.alive = false
         println(betelgeuse.alive)
 
-        var nueva : star = star()
+        var nueva: star = star()
         println(nueva)
 
         var hoy: dias = dias.LUNES
@@ -87,13 +93,13 @@ class PooActivity : AppCompatActivity() {
         hoy = dias.DOMINGO
 
         var btFight = findViewById<Button>(R.id.btFight)
-        btFight.setOnClickListener{
+        btFight.setOnClickListener {
             fight(firePok, earthPok)
         }
 
     }
 
-    fun createNewPokemon(v: View){
+    fun createNewPokemon(v: View) {
         var etName = findViewById<EditText>(R.id.etName)
         var etAttackPower = findViewById<EditText>(R.id.etAttackPower)
 
@@ -109,7 +115,7 @@ class PooActivity : AppCompatActivity() {
         loadDataPokemon(tvPokemon, pok)
     }
 
-    fun createNewWaterPokemon(v: View){
+    fun createNewWaterPokemon(v: View) {
         var etWaterName = findViewById<EditText>(R.id.etWaterName)
         var etWaterAttackPower = findViewById<EditText>(R.id.etWaterAttackPower)
         var etWaterMaxResistence = findViewById<EditText>(R.id.etWaterMaxResistence)
@@ -117,25 +123,32 @@ class PooActivity : AppCompatActivity() {
         waterPok = Waterpokemon()
 
         if (!etWaterName.text.isNullOrEmpty() && !etWaterAttackPower.text.isNullOrEmpty())
-            waterPok.Waterpokemon(etWaterName.text.toString(),
+            waterPok.Waterpokemon(
+                etWaterName.text.toString(),
                 etWaterAttackPower.text.toString().toFloat(),
-                etWaterMaxResistence.text.toString().toInt())
+                etWaterMaxResistence.text.toString().toInt()
+            )
 
         var ivWaterPokemon = findViewById<ImageView>(R.id.ivWaterPokemon)
         ivWaterPokemon.setImageResource(R.mipmap.water)
-        ivWaterPokemon.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
+        ivWaterPokemon.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
 
 
         var tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
         loadDataPokemon(tvWaterPokemon, waterPok)
     }
-    fun cureWaterPokemon(v: View){
+
+    fun cureWaterPokemon(v: View) {
         waterPok.cure()
         var tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
         loadDataPokemon(tvWaterPokemon, waterPok)
     }
-    fun sayHiWaterPokemon(v: View){ waterPok.sayHi() }
-    fun evolveWaterPokemon(v: View){
+
+    fun sayHiWaterPokemon(v: View) {
+        waterPok.sayHi()
+    }
+
+    fun evolveWaterPokemon(v: View) {
 
         var etEvolveWaterPokemon = findViewById<EditText>(R.id.etEvolveWaterPokemon)
 
@@ -148,7 +161,7 @@ class PooActivity : AppCompatActivity() {
         loadDataPokemon(tvWaterPokemon, waterPok)
     }
 
-    fun createNewFirePokemon(v: View){
+    fun createNewFirePokemon(v: View) {
         var etFireName = findViewById<EditText>(R.id.etFireName)
         var etFireAttackPower = findViewById<EditText>(R.id.etFireAttackPower)
         var etFireBallTemperature = findViewById<EditText>(R.id.etFireBallTemperature)
@@ -156,25 +169,32 @@ class PooActivity : AppCompatActivity() {
         firePok = Firepokemon()
 
         if (!etFireName.text.isNullOrEmpty() && !etFireAttackPower.text.isNullOrEmpty())
-            firePok.Firepokemon(etFireName.text.toString(),
+            firePok.Firepokemon(
+                etFireName.text.toString(),
                 etFireAttackPower.text.toString().toFloat(),
-                etFireBallTemperature.text.toString().toInt())
+                etFireBallTemperature.text.toString().toInt()
+            )
 
         var ivFirePokemon = findViewById<ImageView>(R.id.ivFirePokemon)
         ivFirePokemon.setImageResource(R.mipmap.fire)
-        ivFirePokemon.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
+        ivFirePokemon.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
 
 
         var tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
         loadDataPokemon(tvFirePokemon, firePok)
     }
-    fun cureFirePokemon(v: View){
+
+    fun cureFirePokemon(v: View) {
         firePok.cure()
         var tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
         loadDataPokemon(tvFirePokemon, firePok)
     }
-    fun sayHiFirePokemon(v: View){ firePok.sayHi() }
-    fun evolveFirePokemon(v: View){
+
+    fun sayHiFirePokemon(v: View) {
+        firePok.sayHi()
+    }
+
+    fun evolveFirePokemon(v: View) {
 
         var etEvolveFirePokemon = findViewById<EditText>(R.id.etEvolveFirePokemon)
 
@@ -188,8 +208,7 @@ class PooActivity : AppCompatActivity() {
     }
 
 
-
-    fun createNewEarthPokemon(v: View){
+    fun createNewEarthPokemon(v: View) {
         var etEarthName = findViewById<EditText>(R.id.etEarthName)
         var etEarthAttackPower = findViewById<EditText>(R.id.etEarthAttackPower)
         var etEarthMaxDepth = findViewById<EditText>(R.id.etEarthMaxDepth)
@@ -197,25 +216,32 @@ class PooActivity : AppCompatActivity() {
         earthPok = Earthpokemon()
 
         if (!etEarthName.text.isNullOrEmpty() && !etEarthAttackPower.text.isNullOrEmpty())
-            earthPok.Earthpokemon(etEarthName.text.toString(),
+            earthPok.Earthpokemon(
+                etEarthName.text.toString(),
                 etEarthAttackPower.text.toString().toFloat(),
-                etEarthMaxDepth.text.toString().toInt())
+                etEarthMaxDepth.text.toString().toInt()
+            )
 
         var ivEarthPokemon = findViewById<ImageView>(R.id.ivEarthPokemon)
         ivEarthPokemon.setImageResource(R.mipmap.earth)
-        ivEarthPokemon.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
+        ivEarthPokemon.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
 
 
         var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
-    fun cureEarthPokemon(v: View){
+
+    fun cureEarthPokemon(v: View) {
         earthPok.cure()
         var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
-    fun sayHiEarthPokemon(v: View){ earthPok.sayHi() }
-    fun evolveEarthPokemon(v: View){
+
+    fun sayHiEarthPokemon(v: View) {
+        earthPok.sayHi()
+    }
+
+    fun evolveEarthPokemon(v: View) {
 
         var etEvolveEarthPokemon = findViewById<EditText>(R.id.etEvolveEarthPokemon)
 
@@ -228,7 +254,7 @@ class PooActivity : AppCompatActivity() {
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
 
-    fun sayByeEarthPokemon(v: View){
+    fun sayByeEarthPokemon(v: View) {
         earthPok.sayBye()
     }
 
@@ -238,18 +264,24 @@ class PooActivity : AppCompatActivity() {
         emtLog.setText("")
         var text = ""
 
-        text += "\n${p1.getName()} (${p1.getLife().toInt()}) Vs ${p2.getName()} (${p2.getLife().toInt()})"
+        text += "\n${p1.getName()} (${p1.getLife().toInt()}) Vs ${p2.getName()} (${
+            p2.getLife().toInt()
+        })"
 
-        while (p1.getLife() > 0 && p2.getLife() > 0){
+        while (p1.getLife() > 0 && p2.getLife() > 0) {
             text += "\n${p1.getName()} ataca!"
-            p1.attack();
+            p1.attack()
             p2.setLife(p2.getLife() - p1.getAttackPower())
-            text += "\n${p1.getName()} (${p1.getLife().toInt()}) Vs ${p2.getName()} (${p2.getLife().toInt()})"
-            if (p2.getLife() > 0){
+            text += "\n${p1.getName()} (${p1.getLife().toInt()}) Vs ${p2.getName()} (${
+                p2.getLife().toInt()
+            })"
+            if (p2.getLife() > 0) {
                 text += "\n${p2.getName()} ataca!"
                 p2.attack()
                 p1.setLife(p1.getLife() - p2.getAttackPower())
-                text += "\n${p1.getName()} (${p1.getLife().toInt()}) Vs ${p2.getName()} (${p2.getLife().toInt()})"
+                text += "\n${p1.getName()} (${
+                    p1.getLife().toInt()
+                }) Vs ${p2.getName()} (${p2.getLife().toInt()})"
             }
         }
 
@@ -266,7 +298,7 @@ class PooActivity : AppCompatActivity() {
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
 
-    private fun loadDataPokemon(tv: TextView, p: Pokemon){
+    private fun loadDataPokemon(tv: TextView, p: Pokemon) {
         var description: String = ""
 
         description += p.getName() + " ("
