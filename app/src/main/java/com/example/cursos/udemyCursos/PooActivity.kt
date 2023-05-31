@@ -30,7 +30,15 @@ class PooActivity : AppCompatActivity() {
             println("Hola, me llaman $apodo")
         }
     }
-
+    // Funciones de extension, permiten añadir metodos a objetos que existen
+    private fun String.noSpaces() : String{
+        return this.replace(" ", "")
+    }
+    private fun IntArray.show(){
+        print("[")
+        for (i in this) print("$i")
+        print("]")
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPooBinding.inflate(layoutInflater)
@@ -52,6 +60,22 @@ class PooActivity : AppCompatActivity() {
                 bicho.setLife(30f)
                 println(bicho.getLife())*/
 
+        /*Funciones de extension
+
+        */
+
+        var usuario = "    soy   yo    "
+        println("$usuario ${usuario.length}  - ${usuario.noSpaces()} ${usuario.noSpaces().length}")
+        var array1 : Array<Int> = arrayOf(5,4,3,2,1)
+        var array2 = IntArray(3)
+        array2[0] = 10
+        array2[1] = 20
+        array2[2] = 30
+        // se pueden hacer varias instrucciones en la misma linea separando con  ;
+        println("Array2 : "); array2.show()
+        var array3 : IntArray = intArrayOf(1,2,3,4,5)
+        println("Array3 : "); array3.show()
+
         //Accede a clase padre
         var sc = SubClasses()
         println(sc.presentar())
@@ -62,7 +86,7 @@ class PooActivity : AppCompatActivity() {
         var inn = SubClasses().Interna()
         println(inn.presentar())
 
-
+        //Objetos anonimos se pueden implementar propiedades y funciones
         println(fernanda.saludo())
         fernanda.apodo = "SuperFer"
         println(fernanda.saludo())
