@@ -30,51 +30,104 @@ class PooActivity : AppCompatActivity() {
             println("Hola, me llaman $apodo")
         }
     }
+
     // Funciones de extension, permiten añadir metodos a objetos que existen
-    private fun String.noSpaces() : String{
+    private fun String.noSpaces(): String {
         return this.replace(" ", "")
     }
-    private fun IntArray.show(){
+
+    private fun IntArray.show() {
         print("[")
         for (i in this) print("$i")
         print("]")
     }
+
+    //Funciones de odern superior
+    // Funciones que reciben funciones
+
+    private fun calculadora(n1: Int, n2: Int, fn: (Int, Int) -> Int): Int {
+        return fn(n1, n2)
+    }
+
+    private fun suma(x: Int, y: Int): Int {
+        return x + y
+    }
+
+    private fun resta(x: Int, y: Int): Int {
+        return x - y
+    }
+
+    private fun multiplica(x: Int, y: Int) = x * y
+    private fun divide(x: Int, y: Int) = x / y
+
+    private fun inColombia(h: Float): Boolean {
+        return h > 1.6f
+    }
+
+    private fun inSpain(h: Float): Boolean {
+        return h > 1.65f
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPooBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        /*
-                var num : Int = 0
-                val jota : Person = Person("Jota", "ASD1Q23")
-                val anonimo : Person = Person()
-                anonimo.Person()
-                println(jota.alive)
-                println(jota.nombre)
-                println(jota.passport)
-                jota.die()
-                println(jota.alive)
 
-                val bicho : Pokemon = Pokemon()
-                println(bicho.getName())
-                println(bicho.getAttackPower())
-                bicho.setLife(30f)
-                println(bicho.getLife())*/
+        var num: Int = 0
+        val jota: Person = Person("Jota", "ASD1Q23",1.62f)
+        val anonimo: Person = Person()
+        anonimo.Person()
+        println(jota.alive)
+        println(jota.nombre)
+        println(jota.passport)
+        jota.die()
 
-        /*Funciones de extension
+        println(jota.alive)
+        if (jota.checkPolice(::inColombia)) println("${jota.nombre} puede ser Policia en colombia")
+        if (jota.checkPolice(::inSpain)) println("${jota.nombre} puede ser Policia en colombia")
 
-        */
+        val bicho: Pokemon = Pokemon()
+        println(bicho.getName())
+        println(bicho.getAttackPower())
+        bicho.setLife(30f)
+        println(bicho.getLife())
 
+        /*Funciones de extension*/
         var usuario = "    soy   yo    "
         println("$usuario ${usuario.length}  - ${usuario.noSpaces()} ${usuario.noSpaces().length}")
-        var array1 : Array<Int> = arrayOf(5,4,3,2,1)
+        var array1: Array<Int> = arrayOf(5, 4, 3, 2, 1)
         var array2 = IntArray(3)
         array2[0] = 10
         array2[1] = 20
         array2[2] = 30
+
         // se pueden hacer varias instrucciones en la misma linea separando con  ;
         println("Array2 : "); array2.show()
-        var array3 : IntArray = intArrayOf(1,2,3,4,5)
+        var array3: IntArray = intArrayOf(1, 2, 3, 4, 5)
         println("Array3 : "); array3.show()
+
+        /*Funciones de orden superior*/
+        println("La suma de 80 y 20 es  ${calculadora(80, 20, ::suma)}")
+        println("La resta de 50 y 10 es  ${calculadora(80, 20, ::resta)}")
+        println("la multiplicacion de 7 y 7 es  ${calculadora(80, 20, ::multiplica)}")
+        println("La division de 12 y 3 es  ${calculadora(80, 20, ::divide)}")
+
+        /*Lambdas*/
+
+        var funcion = { x : Int, y : Int -> x+y}
+        println("La suma de 80 y 20 con variable es  ${calculadora(80, 20, funcion)}")
+
+        funcion = { x : Int, y : Int -> x-y}
+        println("La resta de 50 y 20 con variable es  ${calculadora(80, 20, funcion)}")
+
+        println("La suma de 80 y 20 con lambdas es  ${calculadora(80, 20) { x: Int, y: Int -> x - y }}")
+        println("La resta de 50 y 20 con lambdas es  ${calculadora(80, 20) { x: Int, y: Int -> x - y }}")
+        println("La potencia de 2 con lambdas es  ${calculadora(80, 20) 
+        { x, y -> 
+            var valor = 1
+            for (i in 1..y) valor *= x
+            valor
+             }}")
 
         //Accede a clase padre
         var sc = SubClasses()
