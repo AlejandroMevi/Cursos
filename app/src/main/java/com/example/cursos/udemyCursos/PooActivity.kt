@@ -13,7 +13,7 @@ import com.example.cursos.R
 import com.example.cursos.databinding.ActivityPooBinding
 
 private lateinit var binding: ActivityPooBinding
-
+typealias aliasObjeto = SubClasses.Anidada
 class PooActivity : AppCompatActivity() {
     companion object {
         lateinit var maincontext: Context
@@ -68,6 +68,13 @@ class PooActivity : AppCompatActivity() {
         return h > 1.65f
     }
 
+    private fun Person.checkPolice(fn : (Float)->Boolean) : Boolean{
+        return fn(height)
+    }
+    private fun recorrerArray(array : IntArray, fn: (Int)-> Unit){
+        for (i in array)
+            fn(i)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPooBinding.inflate(layoutInflater)
@@ -129,12 +136,35 @@ class PooActivity : AppCompatActivity() {
             valor
              }}")
 
+        // con .show muestro en pantalla el array
+        var array4 = IntArray(10){5}
+        println("array 4 : "); array4.show()
+        var array5 = IntArray(10){ it }
+        println("array 5 : "); array5.show()
+        var array6 = IntArray(10){ it*2 }
+        println("array 6 : "); array6.show()
+        var array7 = IntArray(10){ i-> i*3 }
+        println("array 7 : "); array7.show()
+
+        //Se puede utilizar el valor que regresa la clase superior en una nueva clase
+        // con la lambda se pueden utilizar los datos
+        var suma = 0
+        recorrerArray(array7){
+            suma += it
+        }
+        println("la suma de todos los elementos es $suma")
+
+
         //Accede a clase padre
         var sc = SubClasses()
         println(sc.presentar())
         //Accede a clase anidada
         var ani = SubClasses.Anidada()
         println(ani.presentar())
+
+        var anidada = aliasObjeto()
+        println(anidada.presentar())
+
         //Accede a clase interna
         var inn = SubClasses().Interna()
         println(inn.presentar())
@@ -147,6 +177,17 @@ class PooActivity : AppCompatActivity() {
 
         var sol: star = star("Sol", 696340f, "Vía Láctea")
         println(sol)
+
+        //Destructuracion
+        var (name_star2, radius_star2, galaxy2) = star("Sol", 696340f, "Vía Láctea")
+        println("datos 2 : $name_star2, $radius_star2, $galaxy2" )
+        var (name_star3, radius_star3, galaxy3) = star("Sol3", 696340f, "Vía Láctea3")
+        println("datos 3 : $name_star3, $radius_star3" )
+        var (name_star4, _, galaxy4) = star("Sol4", 696340f, "Vía Láctea4")
+        println("datos 3 : $name_star4, $galaxy4" )
+
+        var componente = star("Sol5", 696340f, "Vía Láctea5")
+        println("datos 5 : ${componente.component1()}, ${componente.component2()}, ${componente.component3()}" )
 
         var betelgeuse: star = star("Betelgeuse", 617100000f, "Orión")
         betelgeuse.alive = false
@@ -170,6 +211,7 @@ class PooActivity : AppCompatActivity() {
         hoy = dias.DOMINGO
 
         var btFight = findViewById<Button>(R.id.btFight)
+
         btFight.setOnClickListener {
             fight(firePok, earthPok)
         }
