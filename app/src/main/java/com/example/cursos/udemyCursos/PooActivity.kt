@@ -3,6 +3,7 @@ package com.example.cursos.udemyCursos
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Message
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.cursos.R
 import com.example.cursos.databinding.ActivityPooBinding
+
 
 private lateinit var binding: ActivityPooBinding
 typealias aliasObjeto = SubClasses.Anidada
@@ -75,6 +77,23 @@ class PooActivity : AppCompatActivity() {
         for (i in array)
             fn(i)
     }
+
+
+    private fun valueTry(a: Int, b: Int): Any {
+        var res =
+            try {
+
+                println("Division 5/10 = ${5/10}")
+
+                a/b
+            }catch (e: Exception){
+
+                "Division no permitida"
+            }
+        return res
+    }
+
+    class IllegalPasswordException(message: String): Exception(message)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPooBinding.inflate(layoutInflater)
@@ -92,6 +111,58 @@ class PooActivity : AppCompatActivity() {
         println(jota.alive)
         if (jota.checkPolice(::inColombia)) println("${jota.nombre} puede ser Policia en colombia")
         if (jota.checkPolice(::inSpain)) println("${jota.nombre} puede ser Policia en colombia")
+
+        /*Scope funcion*/
+
+        jota.let {
+            it.die()
+            it.height = 1.8f
+            it.passport = "asdfa23"
+        }
+
+        var jose = Person("Jose", "qwe2").apply {
+            die()
+            height = 1.9f
+            passport = "12mfkl"
+        }.also {
+            it.alive = true
+        }
+
+        var maria = Person("Maria", "asd2", 1.7f).run {
+            this.height = 1.9f
+            this.passport = "AS12"
+
+            "Maria es muy alta"
+        }
+
+        var marta = with(Person("Marta", "asda2", 1.6f)){
+            height = 1.0f
+            this.passport = "2dawsd"
+
+            "Marta no es muy alta"
+        }
+
+        /*OPERADOR ELVIS
+        * en caso de no ser nulo se ejecuta la parte izquierda
+        * si es nullo se le asigna un valor en la parte derecha
+        * */
+        var pais : String? = "Rusia"
+        pais = pais?.uppercase() ?: "DESCONOCIDO"
+        println(pais)
+
+        var ciudad : String? = null
+        ciudad = ciudad?.uppercase() ?: "DESCONOCIDO"
+        println(ciudad)
+
+        /*Lazy funciona con valores y no variables
+        * le da el valor asignado hasta que se ejecuta en codigopara no consumir memoria
+        * es conveniente utilizarlo cuando el codigo es pesado de ejecutar
+        * */
+        val calle: String by lazy { "Nueva" }
+
+        var direccion = "$pais - $ciudad -$calle"
+        println(direccion)
+
 
         val bicho: Pokemon = Pokemon()
         println(bicho.getName())
@@ -120,7 +191,6 @@ class PooActivity : AppCompatActivity() {
         println("La division de 12 y 3 es  ${calculadora(80, 20, ::divide)}")
 
         /*Lambdas*/
-
         var funcion = { x : Int, y : Int -> x+y}
         println("La suma de 80 y 20 con variable es  ${calculadora(80, 20, funcion)}")
 
@@ -209,6 +279,33 @@ class PooActivity : AppCompatActivity() {
         println(hoy.jornada)
 
         hoy = dias.DOMINGO
+
+
+        /* Tipo de errores
+        * NullPointerException- no tiene datos, es null
+        * ArithmeticException- error de operaciones aritmeticas
+        * securityException- violacion de seguridad
+        * arrayIndexOutOfBoundException - se quiere acceder a un indice de array que no existe
+        * */
+
+        var res1 = valueTry(10,2)
+        println(res1)
+        var res2 = valueTry(10,0)
+        println(res2)
+
+        /*Throw exception se utiliza para poder mandar el mensaje que quiera en
+        * donde sale el error con letras rojas, personaliza los mensajes e identifica en donde esta
+        * */
+        var password : String = "1234"
+        if (password.length < 6){
+            throw Exception("Password muy corta")
+        }
+        else println("Password segura")
+        //De esta manera se puede personalizar el tipo de error con la clase que creamos "IllegalPasswordException"
+        if (password.length < 6){
+            throw IllegalPasswordException("Password muy corta")
+        }
+        else println("Password segura")
 
         var btFight = findViewById<Button>(R.id.btFight)
 
