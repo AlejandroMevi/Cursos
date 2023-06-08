@@ -12,21 +12,27 @@
         android:theme="@style/Theme.Cursos"
         tools:targetApi="31">
         <activity
-            android:name=".udemyCursos.PooActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:name=".EjerciciosActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
+        <activity
+            android:name=".udemyCursos.PooActivity"
+            android:exported="false">
+
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".udemyCursos.UdemyCursoPrimero"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>
