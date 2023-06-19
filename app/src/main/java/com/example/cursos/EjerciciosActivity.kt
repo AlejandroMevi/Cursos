@@ -47,8 +47,10 @@ class EjerciciosActivity : AppCompatActivity() {
     }
 
     private fun numeroPrimo(int: Int): Boolean {
-        for (i in 2 .. binding.editText.text.toString().toInt()) {
-            if (binding.editText.text.toString().toInt() % i == 0 && i != binding.editText.text.toString().toInt())  {
+        for (i in 2..binding.editText.text.toString().toInt()) {
+            if (binding.editText.text.toString()
+                    .toInt() % i == 0 && i != binding.editText.text.toString().toInt()
+            ) {
                 return false
                 break
             }
@@ -91,8 +93,10 @@ class EjerciciosActivity : AppCompatActivity() {
             "Numero primo : ${
                 numero(binding.editText.text.toString().toInt()) {
                     var b: Boolean
-                    for (i in 2 .. binding.editText.text.toString().toInt()) {
-                        if (binding.editText.text.toString().toInt() % i == 0 && i != binding.editText.text.toString().toInt())  {
+                    for (i in 2..binding.editText.text.toString().toInt()) {
+                        if (binding.editText.text.toString()
+                                .toInt() % i == 0 && i != binding.editText.text.toString().toInt()
+                        ) {
                             b = false
                             break
                         }
