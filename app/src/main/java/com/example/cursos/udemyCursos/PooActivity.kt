@@ -16,7 +16,6 @@ import com.example.cursos.databinding.ActivityPooBinding
 
 private lateinit var binding: ActivityPooBinding
 typealias aliasObjeto = SubClasses.Anidada
-
 class PooActivity : AppCompatActivity() {
     companion object {
         lateinit var maincontext: Context
@@ -52,7 +51,6 @@ class PooActivity : AppCompatActivity() {
         return fn(n1, n2)
     }
 
-
     private fun suma(x: Int, y: Int): Int {
         return x + y
     }
@@ -72,11 +70,10 @@ class PooActivity : AppCompatActivity() {
         return h > 1.65f
     }
 
-    private fun Person.checkPolice(fn: (Float) -> Boolean): Boolean {
+    private fun Person.checkPolice(fn : (Float)->Boolean) : Boolean{
         return fn(height)
     }
-
-    private fun recorrerArray(array: IntArray, fn: (Int) -> Unit) {
+    private fun recorrerArray(array : IntArray, fn: (Int)-> Unit){
         for (i in array)
             fn(i)
     }
@@ -86,25 +83,24 @@ class PooActivity : AppCompatActivity() {
         var res =
             try {
 
-                println("Division 5/10 = ${5 / 10}")
+                println("Division 5/10 = ${5/10}")
 
-                a / b
-            } catch (e: Exception) {
+                a/b
+            }catch (e: Exception){
 
                 "Division no permitida"
             }
         return res
     }
 
-    class IllegalPasswordException(message: String) : Exception(message)
-
+    class IllegalPasswordException(message: String): Exception(message)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPooBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         var num: Int = 0
-        val jota: Person = Person("Jota", "ASD1Q23", 1.62f)
+        val jota: Person = Person("Jota", "ASD1Q23",1.62f)
         val anonimo: Person = Person()
         anonimo.Person()
         println(jota.alive)
@@ -139,7 +135,7 @@ class PooActivity : AppCompatActivity() {
             "Maria es muy alta"
         }
 
-        var marta = with(Person("Marta", "asda2", 1.6f)) {
+        var marta = with(Person("Marta", "asda2", 1.6f)){
             height = 1.0f
             this.passport = "2dawsd"
 
@@ -150,11 +146,11 @@ class PooActivity : AppCompatActivity() {
         * en caso de no ser nulo se ejecuta la parte izquierda
         * si es nullo se le asigna un valor en la parte derecha
         * */
-        var pais: String? = "Rusia"
+        var pais : String? = "Rusia"
         pais = pais?.uppercase() ?: "DESCONOCIDO"
         println(pais)
 
-        var ciudad: String? = null
+        var ciudad : String? = null
         ciudad = ciudad?.uppercase() ?: "DESCONOCIDO"
         println(ciudad)
 
@@ -195,52 +191,35 @@ class PooActivity : AppCompatActivity() {
         println("La division de 12 y 3 es  ${calculadora(80, 20, ::divide)}")
 
         /*Lambdas*/
-        var funcion = { x: Int, y: Int -> x + y }
+        var funcion = { x : Int, y : Int -> x+y}
         println("La suma de 80 y 20 con variable es  ${calculadora(80, 20, funcion)}")
 
-        funcion = { x: Int, y: Int -> x - y }
+        funcion = { x : Int, y : Int -> x-y}
         println("La resta de 50 y 20 con variable es  ${calculadora(80, 20, funcion)}")
 
-        println(
-            "La suma de 80 y 20 con lambdas es  ${
-                calculadora(
-                    80,
-                    20
-                ) { x: Int, y: Int -> x - y }
-            }"
-        )
-        println(
-            "La resta de 50 y 20 con lambdas es  ${
-                calculadora(
-                    80,
-                    20
-                ) { x: Int, y: Int -> x - y }
-            }"
-        )
-        println("La potencia de 2 con lambdas es  ${
-            calculadora(80, 20)
-            { x, y ->
-                var valor = 1
-                for (i in 1..y) valor *= x
-                valor
-            }
-        }"
-        )
+        println("La suma de 80 y 20 con lambdas es  ${calculadora(80, 20) { x: Int, y: Int -> x - y }}")
+        println("La resta de 50 y 20 con lambdas es  ${calculadora(80, 20) { x: Int, y: Int -> x - y }}")
+        println("La potencia de 2 con lambdas es  ${calculadora(80, 20) 
+        { x, y -> 
+            var valor = 1
+            for (i in 1..y) valor *= x
+            valor
+             }}")
 
         // con .show muestro en pantalla el array
-        var array4 = IntArray(10) { 5 }
+        var array4 = IntArray(10){5}
         println("array 4 : "); array4.show()
-        var array5 = IntArray(10) { it }
+        var array5 = IntArray(10){ it }
         println("array 5 : "); array5.show()
-        var array6 = IntArray(10) { it * 2 }
+        var array6 = IntArray(10){ it*2 }
         println("array 6 : "); array6.show()
-        var array7 = IntArray(10) { i -> i * 3 }
+        var array7 = IntArray(10){ i-> i*3 }
         println("array 7 : "); array7.show()
 
         //Se puede utilizar el valor que regresa la clase superior en una nueva clase
         // con la lambda se pueden utilizar los datos
         var suma = 0
-        recorrerArray(array7) {
+        recorrerArray(array7){
             suma += it
         }
         println("la suma de todos los elementos es $suma")
@@ -271,14 +250,14 @@ class PooActivity : AppCompatActivity() {
 
         //Destructuracion
         var (name_star2, radius_star2, galaxy2) = star("Sol", 696340f, "Vía Láctea")
-        println("datos 2 : $name_star2, $radius_star2, $galaxy2")
+        println("datos 2 : $name_star2, $radius_star2, $galaxy2" )
         var (name_star3, radius_star3, galaxy3) = star("Sol3", 696340f, "Vía Láctea3")
-        println("datos 3 : $name_star3, $radius_star3")
+        println("datos 3 : $name_star3, $radius_star3" )
         var (name_star4, _, galaxy4) = star("Sol4", 696340f, "Vía Láctea4")
-        println("datos 3 : $name_star4, $galaxy4")
+        println("datos 3 : $name_star4, $galaxy4" )
 
         var componente = star("Sol5", 696340f, "Vía Láctea5")
-        println("datos 5 : ${componente.component1()}, ${componente.component2()}, ${componente.component3()}")
+        println("datos 5 : ${componente.component1()}, ${componente.component2()}, ${componente.component3()}" )
 
         var betelgeuse: star = star("Betelgeuse", 617100000f, "Orión")
         betelgeuse.alive = false
@@ -309,22 +288,24 @@ class PooActivity : AppCompatActivity() {
         * arrayIndexOutOfBoundException - se quiere acceder a un indice de array que no existe
         * */
 
-        var res1 = valueTry(10, 2)
+        var res1 = valueTry(10,2)
         println(res1)
-        var res2 = valueTry(10, 0)
+        var res2 = valueTry(10,0)
         println(res2)
 
         /*Throw exception se utiliza para poder mandar el mensaje que quiera en
         * donde sale el error con letras rojas, personaliza los mensajes e identifica en donde esta
         * */
-        var password: String = "1234"
-        if (password.length < 6) {
+        var password : String = "1234"
+        if (password.length < 6){
             throw Exception("Password muy corta")
-        } else println("Password segura")
+        }
+        else println("Password segura")
         //De esta manera se puede personalizar el tipo de error con la clase que creamos "IllegalPasswordException"
-        if (password.length < 6) {
+        if (password.length < 6){
             throw IllegalPasswordException("Password muy corta")
-        } else println("Password segura")
+        }
+        else println("Password segura")
 
         var btFight = findViewById<Button>(R.id.btFight)
 
