@@ -15,4 +15,6 @@ class Notas {
     /*Content providers
     *Compartir datos entre aplicaciones
     *  */
+
+
 }

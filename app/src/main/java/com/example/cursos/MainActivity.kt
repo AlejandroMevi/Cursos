@@ -3,22 +3,31 @@ package com.example.cursos
 import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.os.StrictMode
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import com.example.cursos.databinding.ActivityMainBinding
+import java.io.File
 
 private lateinit var binding: ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private var namePDF: String = ""
+
     companion object {
         private const val STORAGE_PERMISSION_REQUEST_CODE = 1
     }
@@ -61,19 +70,40 @@ class MainActivity : AppCompatActivity() {
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(notificationChannel)
         }
-        //val downloadFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        //val downloadFolderUri = Uri.parse(downloadFolder.path)
 
-        //val intent = Intent(Intent.ACTION_VIEW)
-        //intent.setDataAndType(downloadFolderUri, "resource/folder")
-        //intent.addCategory(Intent.CATEGORY_OPENABLE)
+        val downloadsDir: File = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        } else {
+            Environment.getExternalStorageDirectory()
+        }
+
+        val pdfFile = File(downloadsDir, namePDF)
+
+        val pdfUri: Uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val packageName = this.packageName
+            val authority = "${packageName}.fileprovider"
+            FileProvider.getUriForFile(this, authority, pdfFile)
+        } else {
+            Uri.fromFile(pdfFile)
+        }
+
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(pdfUri, "application/pdf")
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            // Evitar errores de StrictMode al abrir el archivo
+            val builder = StrictMode.VmPolicy.Builder()
+            StrictMode.setVmPolicy(builder.build())
+        }
         //val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com.mx/"))
-        //val pendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent =
+            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            //.setContentIntent(pendingIntent)
+            .setContentIntent(pendingIntent)
             .setSmallIcon(R.mipmap.ic_launcher_round)
-            .setContentTitle("titulo")
-            .setContentText("texto")
+            .setContentTitle("TITULO")
+            .setContentText("TEXTO")
             .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
@@ -82,7 +112,7 @@ class MainActivity : AppCompatActivity() {
         NotificationManagerCompat.from(this).apply {
             notificationBuilder.setProgress(progressMax, progressCurrent, false)
             notify(1, notificationBuilder.build())
-            notificationBuilder.setContentText("texto")
+            notificationBuilder.setContentText(namePDF)
                 .setProgress(0, 0, false)
             notify(1, notificationBuilder.build())
         }
