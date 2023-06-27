@@ -17,4 +17,9 @@
     <color name="earth">#814705</color>
     <color name="fire">#f93535</color>
     <color name="water">#457ee1</color>
+
+    <color name="colorOn">#2980b9</color>
+    <color name="colorOff">#3498db</color>
+    <color name="blue_light">#cce3fb</color>
+    <color name="blue_dark">#0360bd</color>
 </resources>
