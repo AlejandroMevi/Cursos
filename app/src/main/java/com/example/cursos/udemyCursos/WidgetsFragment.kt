@@ -141,6 +141,15 @@ class WidgetsFragment : Fragment() {
             seekbarManager(binding.sbNormal)
         }
 
+        binding.npEjemplo.minValue = 0
+        binding.npEjemplo.maxValue = 60
+        binding.npEjemplo.value = 5
+        binding.npEjemplo.wrapSelectorWheel = true
+        binding.npEjemplo.setFormatter { i -> String.format("%02d", i) }
+
+        binding.npEjemplo.setOnValueChangedListener { numberPicker, oldVal, newVal ->
+            binding.tvNumberPicker.text = "NumberPicker: Antes($oldVal) - Ahora ($newVal)"
+        }
 
     }
 
