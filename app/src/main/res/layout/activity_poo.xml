@@ -1,9 +1,389 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".udemyCursos.PooActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivPokemon"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tvPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pokemon: "
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/etName"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Nombre" />
+
+                    <EditText
+                        android:id="@+id/etAttackPower"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Attack Power" />
+
+                    <Button
+                        android:id="@+id/btNewPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/green"
+                        android:onClick="createNewPokemon"
+                        android:text="CREAR POKEMON"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="32"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/etWaterName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:textSize="12dp" />
+
+                    <EditText
+                        android:id="@+id/etWaterAttackPower"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Attack Power"
+                        android:textSize="12dp" />
+
+                    <EditText
+                        android:id="@+id/etWaterMaxResistence"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Max Resistence"
+                        android:textSize="12dp" />
+
+                    <Button
+                        android:id="@+id/btNewWaterPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/water"
+                        android:onClick="createNewWaterPokemon"
+                        android:text="CREAR"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/ivWaterPokemon"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:background="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tvWaterPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Water Pokemon: "
+                        android:textSize="11dp" />
+
+
+                    <Button
+                        android:id="@+id/btCureWaterPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/orange"
+                        android:onClick="cureWaterPokemon"
+                        android:text="SANAR"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <Button
+                        android:id="@+id/btSayHiWaterPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/orange"
+                        android:onClick="sayHiWaterPokemon"
+                        android:text="SALUDAR"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <EditText
+                        android:id="@+id/etEvolveWaterPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:hint="Nuevo Nombre"
+                        android:textSize="12dp" />
+
+                    <Button
+                        android:id="@+id/btEvolveWaterPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/gold"
+                        android:onClick="evolveWaterPokemon"
+                        android:text="EVOLUCIONAR"
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="32"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/etFireName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:textSize="12dp" />
+
+                    <EditText
+                        android:id="@+id/etFireAttackPower"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Attack Power"
+                        android:textSize="12dp" />
+
+                    <EditText
+                        android:id="@+id/etFireBallTemperature"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ball Temperature"
+                        android:textSize="12dp" />
+
+                    <Button
+                        android:id="@+id/btNewFirePokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/fire"
+                        android:onClick="createNewFirePokemon"
+                        android:text="CREAR"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/ivFirePokemon"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:background="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tvFirePokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fire Pokemon: "
+                        android:textSize="11dp" />
+
+
+                    <Button
+                        android:id="@+id/btCureFirePokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/orange"
+                        android:onClick="cureFirePokemon"
+                        android:text="SANAR"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <Button
+                        android:id="@+id/btSayHiFirePokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/orange"
+                        android:onClick="sayHiFirePokemon"
+                        android:text="SALUDAR"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <EditText
+                        android:id="@+id/etEvolveFirePokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:hint="Nuevo Nombre"
+                        android:textSize="12dp" />
+
+                    <Button
+                        android:id="@+id/btEvolveFirePokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/gold"
+                        android:onClick="evolveFirePokemon"
+                        android:text="EVOLUCIONAR"
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="32"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/etEarthName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:textSize="12dp" />
+
+                    <EditText
+                        android:id="@+id/etEarthAttackPower"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Attack Power"
+                        android:textSize="12dp" />
+
+                    <EditText
+                        android:id="@+id/etEarthMaxDepth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Max Profundidad"
+                        android:textSize="12dp" />
+
+                    <Button
+                        android:id="@+id/btNewEarthPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/earth"
+                        android:onClick="createNewEarthPokemon"
+                        android:text="CREAR"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/ivEarthPokemon"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:background="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tvEarthPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Earth Pokemon: "
+                        android:textSize="11dp" />
+
+
+                    <Button
+                        android:id="@+id/btCureEarthPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/orange"
+                        android:onClick="cureEarthPokemon"
+                        android:text="SANAR"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <Button
+                        android:id="@+id/btSayHiEarthPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/orange"
+                        android:onClick="sayHiEarthPokemon"
+                        android:text="SALUDAR"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <EditText
+                        android:id="@+id/etEvolveEarthPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:hint="Nuevo Nombre"
+                        android:textSize="12dp" />
+
+                    <Button
+                        android:id="@+id/btEvolveEarthPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/gold"
+                        android:onClick="evolveEarthPokemon"
+                        android:text="EVOLUCIONAR"
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
+
+                    <Button
+                        android:id="@+id/btSayByeEarthPokemon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:onClick="sayByeEarthPokemon"
+                        android:text="DESPEDIR"
+                        android:textColor="@color/white"
+                        android:textSize="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btFight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="BATALLA"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/emtLog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+</RelativeLayout>

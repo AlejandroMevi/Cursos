@@ -88,7 +88,7 @@ class UdemyCursoPrimero : AppCompatActivity() {
         )
 
         // recorrer arrays dentro de matrices
-        for (i in (0 until matriz.size)) {
+        for (i in (matriz.indices)) {
             println()
             for (j in (0 until matriz[i].size))
                 println("Posicion [$i][$j] : ${matriz[i][j]}")

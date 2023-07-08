@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".udemyCursos.SearchViewFragment">
+
+    <SearchView
+        android:id="@+id/svUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Nombre: "
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/searchview_bg"
+        android:queryBackground="@android:color/transparent"/>
+
+    <ListView
+        android:id="@+id/lvUsers"
+        android:layout_marginHorizontal="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
