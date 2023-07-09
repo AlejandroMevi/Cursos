@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,6 +15,9 @@
         android:theme="@style/Theme.Cursos"
         tools:targetApi="31">
         <activity
+            android:name=".udemyCursos.UnidadesMedida"
+            android:exported="false" />
+        <activity
             android:name=".EjerciciosActivity"
             android:exported="true">
             <intent-filter>
@@ -21,14 +25,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".udemyCursos.PooActivity"
-            android:exported="false">
-
-        </activity>
-
+            android:exported="false"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="false" />
