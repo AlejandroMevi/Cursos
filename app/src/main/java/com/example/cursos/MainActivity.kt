@@ -117,4 +117,20 @@ class MainActivity : AppCompatActivity() {
             notify(1, notificationBuilder.build())
         }
     }
+
+    /*SnackBar
+    *    internal fun loadSnack(dateSize: Int) {
+        val text: String = when (dateSize) {
+            0 -> "Seleccionar fechas"
+            1 -> "$dateSize fecha seleccionada"
+            else -> "$dateSize fechas seleccionadas"
+        }
+        val snackbar = Snackbar.make(binding.coordinatorLayout, text, Snackbar.LENGTH_INDEFINITE)
+        snackbar.setAction("Cerrar") { }
+        snackbar.setTextColor(requireContext().getColor(R.color.principal))
+        snackbar.setActionTextColor(requireContext().getColor(R.color.principal))
+        snackbar.setBackgroundTint(requireContext().getColor(R.color.light_gray))
+        snackbar.show()
+    }
+    * */
 }
