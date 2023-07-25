@@ -1,5 +1,20 @@
 <resources>
-    <string name="app_name">Cursos</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Horse Challenge</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Horse Challenge</string>
+    <string name="level">Level</string>
+    <string name="moves">Moves</string>
+    <string name="time">Time</string>
+    <string name="lives">Lives</string>
+    <string name="options">Options</string>
+    <string name="instructions">Move the horse over board to complete all cells.</string>
+    <string name="credits">Game Horse</string>
+
+    <string name="premium">Tap here to remove ads, get more level and unlimited lives</string>
+    <string name="premiumTitle">Get premium Acces Forever</string>
+    <string name="premiumBenefit1">No more ads</string>
+    <string name="premiumBenefit2">Unlimited Lives</string>
+    <string name="premiumBenefit3">Keep you reached level</string>
+    <string name="pay">PAY ONLY $1 NOW</string>
+
 </resources>

@@ -22,4 +22,16 @@
     <color name="colorOff">#3498db</color>
     <color name="blue_light">#cce3fb</color>
     <color name="blue_dark">#0360bd</color>
+
+    <!--APLICACION GAME HORSE-->
+    <color name="black_cell">#423327</color>
+    <color name="white_cell">#efcf9b</color>
+    <color name="contrast_data">#a40d0d</color>
+    <color name="selected_cell">#780533</color>
+    <color name="previus_cell">#ffa500</color>
+    <color name="enabled_cell">#1775a4</color>
+    <color name="message_bg">#CDFAD8EF</color>
+    <color name="white_cell_premium">#EAF7E0</color>
+    <color name="black_cell_premium">#185303</color>
+    <color name="contrast_data_premium">#17711B</color>
 </resources>

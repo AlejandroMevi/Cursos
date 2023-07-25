@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Cursos"
         tools:targetApi="31">
         <activity
+            android:name=".horseGame.HorseGame"
+            android:exported="false" />
+        <activity
             android:name=".udemyCursos.UnidadesMedida"
             android:exported="false" />
         <activity
@@ -28,7 +31,7 @@
         </activity>
         <activity
             android:name=".udemyCursos.PooActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
