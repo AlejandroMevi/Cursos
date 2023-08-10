@@ -27,7 +27,7 @@ class WidgetsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityContext = requireContext()
-        curso()
+        //curso()
     }
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class WidgetsFragment : Fragment() {
         binding = FragmentWidgetsBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+/*
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("SetJavaScriptEnabled")
     private fun curso() {
@@ -168,5 +168,5 @@ class WidgetsFragment : Fragment() {
             if (pb.id == R.id.pbSecundario) pb.incrementSecondaryProgressBy(10)
         }
     }
-
+*/
 }
