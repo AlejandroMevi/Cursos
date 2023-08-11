@@ -3,6 +3,7 @@ package com.example.cursos.horseGame
 import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Im
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
@@ -15,6 +16,9 @@ class HorseGame : AppCompatActivity() {
     private lateinit var binding: ActivityHorseGameBinding
     private var cellSelectedX = 0
     private var cellSelectedY = 0
+
+    private var movesRequired = 4
+    private var moves = 64
     private var options = 0
     private var nameColorBlack = "black_cell"
     private var nameColorWhite = "white_cell"
@@ -79,10 +83,8 @@ class HorseGame : AppCompatActivity() {
     }
 
     private fun setFirstPosition() {
-        var x = 0
-        var y = 0
-        x = (0..7).random()
-        y = (0..7).random()
+        val x: Int = (0..7).random()
+        val y: Int = (0..7).random()
 
         cellSelectedX = x
         cellSelectedY = y
@@ -90,6 +92,9 @@ class HorseGame : AppCompatActivity() {
     }
 
     private fun selectCell(x: Int, y: Int) {
+
+        moves--
+        binding.tvMovesData.text = moves.toString()
 
         board[x][y] = 1
         paintHorseCell(cellSelectedX, cellSelectedY, "previus_cell")
@@ -102,7 +107,36 @@ class HorseGame : AppCompatActivity() {
         paintHorseCell(x, y, "selected_cell")
 
         checkOptions(x, y)
+
+        if (moves > 0){
+            checkNewBonus()
+          //  checkGameOver()
+        }
+        //else checkSucessfulEnd()
     }
+
+    private fun checkNewBonus() {
+        if (moves % movesRequired == 0){
+            var bonusCellX = 0
+            var bonusCellY = 0
+
+            var bonusCell = false
+            if (bonusCell == false){
+                bonusCellX = (0..7).random()
+                bonusCellY = (0..7).random()
+
+                if (board[bonusCellX][bonusCellY] == 0) bonusCell = true
+            }
+            board[bonusCellX][bonusCellY] = 2
+            paintBonusCell(bonusCellX, bonusCellY)
+        }
+    }
+
+    private fun paintBonusCell(x: Int, y: Int) {
+        var iv: ImageView = findViewById(resources.getIdentifier("c$x$y","id", packageName))
+        iv.setImageResource(R.drawable.bonus)
+    }
+
 
     private fun clearOptions() {
         for (i in 0..7) {
@@ -155,14 +189,17 @@ class HorseGame : AppCompatActivity() {
         checkMove(x, y, -2, 1)
         checkMove(x, y, -1, -2)
         checkMove(x, y, -2, -1)
+
+        binding.tvOptionesData.text = options.toString()
     }
 
     private fun checkMove(x: Int, y: Int, movX: Int, movY: Int) {
         val optionX = x + movX
         val optionY = y + movY
 
-        if (optionX < 8 && optionY < 8 && optionX > 0 && optionY > 0) {
-            if (board[optionX][optionY] == 0 || board[optionX][optionY] == 2) {
+        if (optionX < 8 && optionY < 8 && optionX >= 0 && optionY >= 0) {
+            if (board[optionX][optionY] == 0
+                || board[optionX][optionY] == 2) {
                 options++
                 paintOptions(optionX, optionY)
 
@@ -178,16 +215,16 @@ class HorseGame : AppCompatActivity() {
     }
 
     private fun checkColorCell(x: Int, y: Int): String {
-        var color = ""
+        val color: String
         val blackColumnX = arrayOf(0, 2, 4, 6)
         val blackRowX = arrayOf(1, 3, 5, 7)
 
-        if ((blackColumnX.contains(x) && blackColumnX.contains(y)) || (blackRowX.contains(x) && blackRowX.contains(
+        color = if ((blackColumnX.contains(x) && blackColumnX.contains(y)) || (blackRowX.contains(x) && blackRowX.contains(
                 y
             ))
         )
-            color = "black"
-        else color = "white"
+            "black"
+        else "white"
 
         return color
     }
