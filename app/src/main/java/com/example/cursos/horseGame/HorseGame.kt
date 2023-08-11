@@ -20,6 +20,8 @@ class HorseGame : AppCompatActivity() {
     private var movesRequired = 4
     private var moves = 64
     private var options = 0
+    private var bonus = 0
+
     private var nameColorBlack = "black_cell"
     private var nameColorWhite = "white_cell"
 
@@ -91,10 +93,26 @@ class HorseGame : AppCompatActivity() {
         selectCell(x, y)
     }
 
+    private fun growProgressBonus() {
+
+
+
+        val height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0f, resources.displayMetrics).toInt()
+        val width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthBonus, resources.displayMetrics).toInt()
+
+        v.setLayoutParams(TableRow.LayoutParams(width, height))
+    }
+
     private fun selectCell(x: Int, y: Int) {
 
         moves--
         binding.tvMovesData.text = moves.toString()
+
+        growProgressBonus()
+        if (board[x][y] == 2){
+            bonus++
+            binding.tvBonusData.text = " + $bonus"
+        }
 
         board[x][y] = 1
         paintHorseCell(cellSelectedX, cellSelectedY, "previus_cell")
