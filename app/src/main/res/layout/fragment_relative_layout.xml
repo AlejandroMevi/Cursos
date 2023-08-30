@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".udemyCursos.RelativeLayoutFragment">
+
+    <View
+        android:id="@+id/vZ"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/green"
+        android:translationZ="1dp"
+        android:translationX="20dp"
+        android:translationY="20dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"/>
+
+    <View
+        android:id="@+id/vA"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/blue_dark"
+        android:layout_marginBottom="10dp"
+        android:translationY="40dp"/>
+
+    <View
+        android:id="@+id/vB"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@color/orange"
+        android:layout_below="@id/vA"
+        android:layout_marginBottom="10dp"/>
+
+    <View
+        android:id="@+id/vC"
+        android:layout_width="305dp"
+        android:layout_height="50dp"
+        android:background="@color/gray"
+        android:layout_below="@id/vA"
+        android:layout_toRightOf="@id/vB"
+        android:layout_marginLeft="10dp"/>
+
+    <View
+        android:id="@+id/vD"
+        android:layout_width="355dp"
+        android:layout_height="50dp"
+        android:background="@color/blue_light"
+        android:layout_below="@id/vB"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <View
+        android:id="@+id/vE"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/blue_dark"
+        android:layout_below="@id/vB"
+        android:layout_toRightOf="@id/vD"/>
+
+    <View
+        android:id="@+id/vF"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/blue_dark"
+        android:layout_below="@id/vD"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <View
+        android:id="@+id/vG"
+        android:layout_width="255dp"
+        android:layout_height="70dp"
+        android:background="@color/orange"
+        android:layout_below="@id/vD"
+        android:layout_toRightOf="@id/vF"
+        android:layout_marginBottom="10dp"/>
+
+    <View
+        android:id="@+id/vH"
+        android:layout_width="255dp"
+        android:layout_height="70dp"
+        android:background="@color/gray"
+        android:layout_below="@id/vG"
+        android:layout_toRightOf="@id/vF"/>
+
+    <View
+        android:id="@+id/vI"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:background="@color/blue_light"
+        android:layout_below="@id/vF"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"/>
+    <View
+        android:id="@+id/vJ"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/blue_light"
+        android:layout_below="@id/vI"/>
+
+</RelativeLayout>
