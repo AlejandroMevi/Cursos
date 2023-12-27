@@ -14,7 +14,6 @@ import com.example.cursos.R
 import com.example.cursos.databinding.ActivityPooBinding
 
 
-private lateinit var binding: ActivityPooBinding
 typealias aliasObjeto = SubClasses.Anidada
 class PooActivity : AppCompatActivity() {
     companion object {
@@ -94,6 +93,8 @@ class PooActivity : AppCompatActivity() {
     }
 
     class IllegalPasswordException(message: String): Exception(message)
+    private lateinit var binding: ActivityPooBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPooBinding.inflate(layoutInflater)

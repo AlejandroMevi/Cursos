@@ -4,17 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".udemyCursos.WidgetsFragment">
-
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <Chronometer
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <DatePicker
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <TimePicker
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+        <NumberPicker
+            android:id="@+id/npEjemplo"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
+            android:theme="@style/NumberPickerTheme"/>
+        <TextView
+            android:id="@+id/tvNumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Fecha seleccionada: " />
+
         <ImageView
             android:id="@+id/ivEjemplo"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:src="@drawable/image"/>
+            android:src="@drawable/tg_beach"/>
 
         <ProgressBar
             android:id="@+id/pbMedium"
@@ -201,5 +224,5 @@
             />
 
     </LinearLayout>
-
+-->
 </ScrollView>

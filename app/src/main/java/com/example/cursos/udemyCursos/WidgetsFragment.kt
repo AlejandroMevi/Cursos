@@ -27,7 +27,7 @@ class WidgetsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityContext = requireContext()
-        curso()
+        //curso()
     }
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class WidgetsFragment : Fragment() {
         binding = FragmentWidgetsBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+/*
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("SetJavaScriptEnabled")
     private fun curso() {
@@ -141,6 +141,15 @@ class WidgetsFragment : Fragment() {
             seekbarManager(binding.sbNormal)
         }
 
+        binding.npEjemplo.minValue = 0
+        binding.npEjemplo.maxValue = 60
+        binding.npEjemplo.value = 5
+        binding.npEjemplo.wrapSelectorWheel = true
+        binding.npEjemplo.setFormatter { i -> String.format("%02d", i) }
+
+        binding.npEjemplo.setOnValueChangedListener { numberPicker, oldVal, newVal ->
+            binding.tvNumberPicker.text = "NumberPicker: Antes($oldVal) - Ahora ($newVal)"
+        }
 
     }
 
@@ -159,5 +168,5 @@ class WidgetsFragment : Fragment() {
             if (pb.id == R.id.pbSecundario) pb.incrementSecondaryProgressBy(10)
         }
     }
-
+*/
 }
