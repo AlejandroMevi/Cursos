@@ -233,7 +233,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:src="@drawable/image" />
+            android:src="@drawable/shapeable_image" />
 
     </LinearLayout>
 </ScrollView>
