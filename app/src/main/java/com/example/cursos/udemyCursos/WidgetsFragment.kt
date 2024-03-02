@@ -37,13 +37,9 @@ class WidgetsFragment : Fragment() {
         binding = FragmentWidgetsBinding.inflate(inflater, container, false)
         return binding.root
     }
-/*
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("SetJavaScriptEnabled")
     private fun curso() {
-
-
-
 
         val imageURL = "http://jotajotavm.com/img/PREMIUM-AndroidDevelopment.gif"
         Picasso.get().load(imageURL).into(binding.ivEjemplo)
@@ -103,11 +99,10 @@ class WidgetsFragment : Fragment() {
         binding.cvEjemplo.firstDayOfWeek = (d + 1) % 7
 
 
-/*
         binding.rbEjemplo.rating = 2.5f
         binding.rbEjemplo.setOnRatingBarChangeListener { ratingBar, rating, _ ->
             tvRating.text = "${rating}/${ratingBar.numStars}"
-        }*/
+        }
 
         binding.pbDeterminado.max = 200
         binding.pbDeterminado.progress = 0
@@ -168,5 +163,5 @@ class WidgetsFragment : Fragment() {
             if (pb.id == R.id.pbSecundario) pb.incrementSecondaryProgressBy(10)
         }
     }
-*/
+
 }
