@@ -95,12 +95,14 @@ class HorseGame : AppCompatActivity() {
 
     private fun growProgressBonus() {
 
-
+/*
 
         val height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0f, resources.displayMetrics).toInt()
         val width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthBonus, resources.displayMetrics).toInt()
 
         v.setLayoutParams(TableRow.LayoutParams(width, height))
+
+ */
     }
 
     private fun selectCell(x: Int, y: Int) {

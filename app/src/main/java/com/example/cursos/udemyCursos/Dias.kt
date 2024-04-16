@@ -5,7 +5,7 @@ enum class dias(val laboral: Boolean, val jornada: Int) {
     JUEVES(true, 8), VIERNES(true, 4), SABADO(false, 0),
     DOMINGO(false, 0);
 
-    // con la funcion regresa un String dependiendo del valor que tiene guardado
+    // con la funcion sqaludo() regresa un String dependiendo del valor que tiene guardado
     // cuando se ejecuta en el activity, se referencia con this
     fun saludo(): String {
         return when (this) {
