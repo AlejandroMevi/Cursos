@@ -98,12 +98,10 @@ class WidgetsFragment : Fragment() {
         val d = binding.cvEjemplo.firstDayOfWeek
         binding.cvEjemplo.firstDayOfWeek = (d + 1) % 7
 
-        /*
-        binding.rbEjemplo.rating = 2.5f
-        binding.rbEjemplo.setOnRatingBarChangeListener { ratingBar, rating, _ ->
-            tvRating.text = "${rating}/${ratingBar.numStars}"
+        binding.ratingBar.rating = 2.5f
+        binding.ratingBar.setOnRatingBarChangeListener { ratingBar, rating, _ ->
+            binding.tvRating.text = "${rating}/${ratingBar.numStars}"
         }
-         */
 
         binding.pbDeterminado.max = 200
         binding.pbDeterminado.progress = 0

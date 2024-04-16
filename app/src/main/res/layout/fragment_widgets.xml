@@ -132,6 +132,23 @@
             android:layout_marginTop="16dp"
             android:text="Fecha seleccionada: " />
 
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:isIndicator="false"
+            android:stepSize="0.5"
+            android:progressBackgroundTint="@color/blue_light"
+            android:progressTint="@color/orange"
+            android:rating="3"
+            android:numStars="5"/>
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <VideoView
             android:id="@+id/vvLocal"
             android:layout_width="match_parent"
